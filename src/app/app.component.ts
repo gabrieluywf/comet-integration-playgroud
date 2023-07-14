@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     <int-input-adapter [formGroup]="myForm" [fieldInfo]="ageFieldInfo"></int-input-adapter>
     <date-input-adapter [formGroup]="myForm" [fieldInfo]="dateFieldInfo"></date-input-adapter>
     <enum-input-adapter [formGroup]="myForm" [fieldInfo]="travelFieldInfo"></enum-input-adapter>
+    <int-input-errors-adapter [formGroup]="myForm" [fieldInfo]="ageFieldErrorsInfo"></int-input-errors-adapter>
     <br>
     <button type="submit" theme="primary" class="btn btn-primary">Submit</button>
   </form>
@@ -28,6 +29,13 @@ export class AppComponent {
 
   public nameFieldInfo = { id: 'name', caption:'Name', validations: [{type:'NotEmpty'}]}
   public ageFieldInfo = { id: 'age', caption:'Age', validations: [{type:'NotEmpty'}]}
+  public ageFieldErrorsInfo = { id: 'ageE',
+   caption:'Age Errors',
+    validations: [
+      { type:'NotEmpty', message: 'Required Field' },
+      { type:'Min', message: 'Min Value' },
+      { type:'Max', message: 'Max Value' },
+    ]}
   public dateFieldInfo = { id: 'date', caption:'Date', validations: [{type:'NotEmpty'}]}
   public travelFieldInfo = { 
     id: 'travel',
@@ -65,9 +73,10 @@ export class AppComponent {
     // this is the form definition you can play with the default values
     this.myForm = this.formBuilder.group({
       name: [12, Validators.required],
-      age: [undefined, [Validators.required, Validators.min(1), Validators.max(10)]],
+      age: [undefined, [Validators.required, Validators.min(0), Validators.max(10)]],
       date: ['2023-07-05T03:00', Validators.required],
-      travel: ['economy', Validators.required]
+      travel: ['economy', Validators.required],
+      ageE: [undefined, [Validators.required, Validators.min(0), Validators.max(10)]],
     });
   }
 

@@ -8,6 +8,7 @@ import { IntInputAdapterComponent } from './adapters/int-input/int-input.adapter
 import { DateInputAdapterComponent } from './adapters/date/date-input.adapter.componen';
 import { TextInputAdapterComponent } from './adapters/text-input/text-input.adapter.component';
 import { EnumInputAdapterComponent } from './adapters/enum-input/enum-input.adapter.component';
+import { IntInputErrorsAdapterComponent } from './adapters/int-input-errors/int-input-errors.adapter.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -23,6 +24,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     DateInputAdapterComponent,
     TextInputAdapterComponent,
     EnumInputAdapterComponent,
+    IntInputErrorsAdapterComponent,
     NgxMaskModule.forRoot(),
   ],
   providers: [],
